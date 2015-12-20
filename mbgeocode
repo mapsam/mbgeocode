@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
-var mbgeocode = require('./');
-var jsonfile = require('jsonfile');
-var color = require('colors');
-var file = process.argv[2]; // third argument in process is the first user command in CLI
-var token = process.argv[3];
+var mbgeocode = require('./'),
+    jsonfile = require('jsonfile'),
+    color = require('colors'),
+    yargs = require('yargs');
+
+var file = process.argv[2], // third argument in process is the first user command in CLI
+    token = process.argv[3];
 
 mbgeocode(__dirname + '/' + file, token, function(err, geojson) {
   if (err) {
