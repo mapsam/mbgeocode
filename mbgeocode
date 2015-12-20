@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+var mbgeocode = require('./');
+var jsonfile = require('jsonfile');
+var file = process.argv[2]; // third argument in process is the first user command in CLI
+var token = process.argv[3];
+
+mbgeocode(__dirname + '/' + file, token, function(err, geojson) {
+  if (err) {
+    console.error(err.message);
+    process.exit(-1);
+  }
+
+  jsonfile.writeFile('mbgeocode.geojson', geojson, function(err) {
+    if (err) throw err;
+    console.log('\o/ COMPLETE!'.green);
+    console.log('A GeoJSON of successful geocodes has been created at mbgeocode.geojson'.bold);
+  });
+});

@@ -1,0 +1,11 @@
+ID,Order date,How many,Shipping option,Price per book,Price subtotal,Price shipping,Price total,Promo code,Price discount,Free shipping,Address,Mailing address line 2,City,Zipcode,State,Country
+1,2014-08-17 15:51:03,1,Meeting Pickup,35,35,0,26.25,25OFF,8.75,0,,,,,,US
+2,2014-08-18 08:13:59,2,Meeting Pickup,35,52.5,0,52.5,,0,0,,,,,,US
+3,2014-08-18 08:16:38,1,Meeting Pickup,35,26.25,0,26.25,,0,0,,,,,,US
+4,2014-08-18 08:48:58,1,Meeting Pickup,35,26.25,0,26.25,,0,0,,,,,,US
+5,2014-08-18 12:08:37,1,USA,35,26.25,7.25,33.5,,0,0,129 Stage Road,,Newport News,23606,VA,US
+6,2014-08-18 12:08:55,1,USA,35,35,7.25,42.25,,0,0,2815 Kelsey Street,,Berkeley,94705,CA,US
+7,2014-08-18 12:13:45,1,Meeting Pickup,35,26.25,0,26.25,,0,0,4108 14th St. NW #3,,Washington,20011,DC,US
+8,2014-08-18 12:14:16,1,USA,35,26.25,7.25,33.5,,0,0,647 North St.,,Boulder,80304,CO,US
+9,2014-08-18 12:15:12,1,USA,35,35,7.25,42.25,,0,0,124 Clipper St,,San Francisco,94114,CA,US
+10,2014-08-18 12:17:15,1,Meeting Pickup,35,35,0,35,,0,0,1100 815 8th Avenue,,Calgary,T2P 3P2,,US
