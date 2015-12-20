@@ -2,6 +2,7 @@
 
 var mbgeocode = require('./');
 var jsonfile = require('jsonfile');
+var color = require('colors');
 var file = process.argv[2]; // third argument in process is the first user command in CLI
 var token = process.argv[3];
 

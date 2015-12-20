@@ -4,7 +4,6 @@ module.exports = geocode;
 
 var request = require('request'),
     color = require('colors'),
-    progress = require('progress'),
     encode = require('./encode.js'),
     slim = require('./slim.js');
 
@@ -22,10 +21,6 @@ var addresses = {
  * @param {function} callback function
  */
 function geocode(data, token, callback) {
-  var bar = new progress('Geocoding [:percent] [:etas] '.grey, {
-    total: data.length
-  });
-
   var preparedAddress = encode(data[0]);
   get(preparedAddress); // start with the first
 
@@ -33,37 +28,36 @@ function geocode(data, token, callback) {
     if (address[0] !== nodata) {
       var url = api + address[0] + '.json?country=' + address[1] + '&access_token=' + token;
 
-      request(url, function (error, response, body) {
-        console.log('Query: ' + address[0] + ' [' + color.blue(response.statusCode) + ']');
-        
+      request(url, function (error, response, body) {        
         if (error) throw error;
         
         var json = JSON.parse(body);
-        
         if (response.statusCode == 200 && json.features && json.features.length > 0) {
+          log(count, data.length, address[0], response.statusCode);
+          
           var feature = slim(JSON.parse(body));
           addresses.features.push(feature);
 
           count++;
-          bar.tick();
           if (count < data.length) {
             get(encode(data[count])); // do it again 
           } else {
             callback(null, addresses);
           }
         } else {
-          bump();
+          log(count, data.length, address[0], response.statusCode);
+          count++;
           if (count < data.length) get(encode(data[count]));
         }
       });
     } else {
-      bump();   
+      log(count, data.length, address[0], 'No address data in row');
+      count++;   
       if (count < data.length) get(encode(data[count]));
     }
   }
+}
 
-  function bump() {
-    count++;
-    bar.tick();
-  }
+function log(count, total, query, status) {
+  console.log('[ '+(count+1)+'/'+total+' ] Query: ' + query + ' [' + color.bold(status) + ']');
 }
