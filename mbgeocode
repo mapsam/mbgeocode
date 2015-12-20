@@ -13,7 +13,7 @@ mbgeocode(__dirname + '/' + file, token, function(err, geojson) {
 
   jsonfile.writeFile('mbgeocode.geojson', geojson, function(err) {
     if (err) throw err;
-    console.log('\o/ COMPLETE!'.green);
+    console.log('\\o/ COMPLETE!'.green);
     console.log('A GeoJSON of successful geocodes has been created at mbgeocode.geojson'.bold);
   });
 });
